@@ -3,7 +3,7 @@ using BinaryBuilder
 # Collection of sources required to build NLopt
 sources = [
     "https://github.com/stevengj/nlopt.git" =>
-    "c0f0ddb2cf6b494fbe7a92226ba15789f7788733", # v2.5 alpha
+    "bcb27e07767451744d34beddf915418037527d57", # v2.5 alpha
 ]
 
 # Bash recipe for building across all platforms
@@ -22,7 +22,7 @@ platforms = supported_platforms() # build on all supported platforms
 
 # The products that we will ensure are always built
 products(prefix) = [
-    LibraryProduct(prefix, "libnlopt", :libnlopt),
+    LibraryProduct(prefix, "libnlopt_cxx", :libnlopt),
 ]
 
 # Dependencies that must be installed before this package can be built
