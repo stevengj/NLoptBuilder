@@ -1,0 +1,35 @@
+language: julia
+os:
+- linux
+julia:
+- 0.6
+notifications:
+  email: false
+git:
+  depth: 99999999
+cache:
+  timeout: 1000
+  directories:
+  - downloads
+env:
+  global:
+  - BINARYBUILDER_DOWNLOADS_CACHE=downloads
+  - BINARYBUILDER_AUTOMATIC_APPLE=true
+sudo: required
+before_script:
+- julia -e 'Pkg.clone("https://github.com/JuliaPackaging/BinaryProvider.jl")'
+- julia -e 'Pkg.clone("https://github.com/JuliaPackaging/BinaryBuilder.jl"); Pkg.build()'
+script:
+- julia build_tarballs.jl
+deploy:
+  provider: releases
+  api_key:
+      # Note; this api_key is only valid for stevengj/NLoptBuilder; you need
+      # to make your own: https://docs.travis-ci.com/user/deployment/releases/
+    secure: MYqqMvfuhMOXuOYkvn9VdvHMX8jvZA4WKQ3Lyw2aFIm6wTtrxpDUFvINjYuSUZqrQNhDsjJKdhsvJcpyGoXATvY4duUQezu4ejEflB66H2rqVUaqlQ4KYP6OXfmnPSzNeDB+8mqvqBtfVZUg3aoGprKMtHH1Icmo4JiKGjZ739zAk6mE0TKxLN4GeGxrYpeyib1dk7lwWBbkH7IxKgHyDfPAqfqzoNmZgWAFUJMPoDCjOwU+3fXbZ0UiMql6pR8QCR8E2OHyg4ytTGgiuuRWbMsxosvEjNfB3s2fwLjuBJdoX4Pq1YdNDoQBQqmDeULJkgqfFz0Vp4AFAeCuTahrQmeQg8isJPIAROlpGzD2ebkVdZYYJgDA6xuQahcVukfjt3oYUbaHzLzKqLYFXgJB+ztAKbnqZq+TjPs8j/OI/Fe70+a+8qq7fWFpE5bfieq7Lf6CtYYZz8VSgr/dr3qChPRT/ZV+g7mEcCKUY+pF+FPbWtv5QtBJWQ5SAx6GinY1IVUdrBrj92vPfEg5E54vKO+Yac2jpC2uxFG7Vb+2WR0BK6bcb6f1amsv5uPtfe7FSnBAhoeAhR7jvRA9ekR/lnyt+I+6vVUH8vFbxa2L/dlj0hsUKs80mpkFbntq+GSVuDnYBuy9jasDSeqwRbFRIORSDzxsccnCvq0JrGam3kM=
+  file_glob: true
+  file: products/*
+  skip_cleanup: true
+  on:
+    repo: stevengj/NLoptBuilder
+    tags: true
