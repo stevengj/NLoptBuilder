@@ -3,7 +3,7 @@ using BinaryBuilder
 # Collection of sources required to build NLopt
 sources = [
     "https://github.com/stevengj/nlopt.git" =>
-    "bcb27e07767451744d34beddf915418037527d57", # v2.5 alpha
+    "24fc75fa160978e0f3d757cbe54e8d858bd25ac9", # v2.5.0
 ]
 
 # Bash recipe for building across all platforms
@@ -30,5 +30,5 @@ dependencies = [
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
-build_tarballs(ARGS, "NLopt", sources, script, platforms, products, dependencies)
+build_tarballs(ARGS, "NLopt", v"2.5.0", sources, script, platforms, products, dependencies)
 
