@@ -12,7 +12,7 @@ cd $WORKSPACE/srcdir/nlopt
 
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DNLOPT_CXX=On -DNLOPT_PYTHON=Off -DNLOPT_OCTAVE=Off -DNLOPT_GUILE=Off -DNLOPT_SWIG=Off ..
+cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DNLOPT_CXX=On -DNLOPT_PYTHON=Off -DNLOPT_OCTAVE=Off -DNLOPT_MATLAB=Off -DNLOPT_GUILE=Off -DNLOPT_SWIG=Off -DNLOPT_LINK_PYTHON=Off ..
 make && make install
 """
 
