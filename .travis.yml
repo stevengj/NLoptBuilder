@@ -2,7 +2,7 @@ language: julia
 os:
 - linux
 julia:
-- 0.6
+- 1.1
 notifications:
   email: false
 git:
@@ -17,8 +17,8 @@ env:
   - BINARYBUILDER_AUTOMATIC_APPLE=true
 sudo: required
 before_script:
-- julia -e 'Pkg.clone("https://github.com/JuliaPackaging/BinaryProvider.jl")'
-- julia -e 'Pkg.clone("https://github.com/JuliaPackaging/BinaryBuilder.jl"); Pkg.build()'
+- julia -e 'import Pkg; Pkg.clone("https://github.com/JuliaPackaging/BinaryProvider.jl")'
+- julia -e 'import Pkg; Pkg.clone("https://github.com/JuliaPackaging/BinaryBuilder.jl"); Pkg.build()'
 script:
 - julia build_tarballs.jl
 deploy:

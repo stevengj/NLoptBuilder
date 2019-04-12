@@ -3,7 +3,7 @@ using BinaryBuilder
 # Collection of sources required to build NLopt
 sources = [
     "https://github.com/stevengj/nlopt.git" =>
-    "24fc75fa160978e0f3d757cbe54e8d858bd25ac9", # v2.5.0
+    "16e200f75f5f579f42e6ca303be4a7549c7ab6fb", # v2.6.0
 ]
 
 # Bash recipe for building across all platforms
@@ -12,7 +12,7 @@ cd $WORKSPACE/srcdir/nlopt
 
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DNLOPT_CXX=On -DNLOPT_PYTHON=Off -DNLOPT_OCTAVE=Off -DNLOPT_MATLAB=Off -DNLOPT_GUILE=Off -DNLOPT_SWIG=Off -DNLOPT_LINK_PYTHON=Off ..
+cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DNLOPT_PYTHON=Off -DNLOPT_OCTAVE=Off -DNLOPT_MATLAB=Off -DNLOPT_GUILE=Off -DNLOPT_SWIG=Off -DNLOPT_LINK_PYTHON=Off ..
 make && make install
 """
 
@@ -22,7 +22,7 @@ platforms = supported_platforms() # build on all supported platforms
 
 # The products that we will ensure are always built
 products(prefix) = [
-    LibraryProduct(prefix, "libnlopt_cxx", :libnlopt),
+    LibraryProduct(prefix, "libnlopt", :libnlopt),
 ]
 
 # Dependencies that must be installed before this package can be built
