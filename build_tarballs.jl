@@ -30,5 +30,5 @@ dependencies = [
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
-build_tarballs(ARGS, "NLopt", v"2.5.0", sources, script, platforms, products, dependencies)
+build_tarballs(ARGS, "NLopt", v"2.6.0", sources, script, platforms, products, dependencies)
 
